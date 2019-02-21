@@ -1,0 +1,61 @@
+{% block title %}PROFIL DE L'ARTISTE- AGENCE THE WILL{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row ">
+            <img src="{{  dir ~ artist.portraitPictureName1 }}" width="250" alt="portrait">
+        </div>
+        <div class="row ">
+            <p>{{ artist.firstname }}  {{ artist.birthName|upper }} <br>
+                {{ artist.pseudonym }} <br>
+                {{ artist.gender }}</p>
+        </div>
+
+        <div class="row ">
+
+            <p>INFOS PERSONNELLES<br>
+                Né(e) le {{ artist.birthDate | date('d/m/Y') }}<br>
+                à {{ artist.birthCity }} ({{ artist.birthDept }})<br>
+                - {{ artist.birthCountry }} <br>
+            </p>
+        </div>
+
+
+        <div class="row ">
+            <p>PHYSIQUE<br>
+                TAILLE :{{ artist.height }}cm <br>
+                POIDS : {{ artist.weight }}kg <br>
+                CORPULENCE : {{ artist.corpulence }} <br>
+                TYPE PHYSIQUE : {{ artist.physical }} <br>
+                CHEVEUX<br>
+                Couleur : {{ artist.colorHair }} <br>
+                Longueur : {{ artist.hair }} <br>
+                Texture : {{ artist.textureHair }} <br>
+                YEUX <br>
+                Couleur : {{ artist.eye }}<br>
+                PILOSITE : {{ artist.hairiness }} <br>
+                TOUR DE : <br>
+                Tête : {{ artist.headCirconference }}<br>
+                Poitrine : {{ artist.chestSize }} <br>
+                Taille : {{ artist.waistSize }} <br>
+                Hanches:{{ artist.hipSize }} <br>
+                TAILLE DE :<br>
+                Jupe : {{ artist.skirtSize }} <br>
+                Veste : {{ artist.jacketSize }} <br>
+                Pantalon : {{ artist.pantsSize }} <br>
+                Soutien-gorge : {{ artist.braSize }} Bonnet:
+                {{ ('cup_size_' ~ artist.cupSize)|trans }}
+                POINTURE : {{ artist.shoesSize }} <br>
+                TRANSFORMATIONS ACCEPTEES : <br>
+                {% for transformations in artist.transformations %}
+            <li>{{ transformations.type }} </li>
+            {% endfor %}
+        </div>
+        <div class="row">
+            EMPLOI(S)/SITUATIONS ACCEPTES : {% for jobs in artist.jobs %}
+                <li>{{ jobs.type }} </li> {% endfor %}
+
+            SECTEURS ACCEPTES : {% for sectorJobs in artist.sectorJobs %}
+                <li>{{ sectorJobs.type }} </li> {% endfor %}
+        </div>
+    </div>
+{% endblock %}

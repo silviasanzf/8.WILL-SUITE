@@ -1,0 +1,32 @@
+{% extends 'baseApply.html.twig' %}
+{% block title %}Acteurs à valider{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <h1>Liste des profils acteurs professionnels à valider</h1>
+        </div>
+        <div class="row justify-content-around">
+            {% for artist in artists %}
+                <div class="col-lg-3 col-md-6 col-12">
+                    <a class="card_profil" href="{{ path('artist_show_admin', {'id': artist.id}) }}">
+                        <div class="card mb-4">
+                            <img src="{{ asset('assets/images/upload/photos/')~ artist.portraitPictureName1 }}"
+                                 class="card-img-top" alt="portrait1">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ artist.firstname }} {{ artist.marriedName }} {{ artist.birthName }}</h5>
+                                <p class="card-text">
+                                    <br>{{ artist.gender }}
+                                    <br>{{ artist.birthdate | age }} ans
+                                    <br>{{ artist.city }}
+                                    <br>{{ artist.phone }}
+                                    <br>{{ artist.email }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

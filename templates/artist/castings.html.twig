@@ -1,0 +1,43 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}Liste des castings{% endblock %}
+
+{%  block body %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <h1>Liste des castings</h1>
+        </div>
+        <div class="row justify-content-around">
+            <table class="table">
+                <thead>
+                    <th>Titre</th>
+                    <th>Boite de production</th>
+                    <th>Format</th>
+                    <th>Durée de tournage</th>
+                    <th> </th>
+                    <th> </th>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                        <tr>
+                            <td>{{ project.title }}</td>
+                            <td>{{ project.productionCompagny }}</td>
+                            <td>{{ project.format }}</td>
+                            <td>{{ project.duration }}</td>
+                            <td><a href="{{ path('project_show_artist', {'id': project.id}) }}">Détails</a></td>
+                            <td>
+                                {% if artist not in project.candidates and artist not in project.artists %}
+                                <a href="{{ path('artist_apply_casting', {'id': project.id}) }}">Candidater</a>
+                                {%  elseif artist in project.candidates %}
+                                    <p>En cours</p>
+                                {%  elseif artist in project.artists %}
+                                    <p>Validé</p>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

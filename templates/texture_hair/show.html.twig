@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TextureHair{% endblock %}
+
+{% block body %}
+    <h1>TextureHair</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ texture_hair.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ texture_hair.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('texture_hair_index') }}">back to list</a>
+
+    <a href="{{ path('texture_hair_edit', {'id': texture_hair.id}) }}">edit</a>
+
+    {{ include('texture_hair/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,199 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}{{ project.title }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+            <h1>{{ project.title }}</h1>
+        </div>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Shooting_date</th>
+                    <td>{{ project.shootingDate }}</td>
+                </tr>
+                <tr>
+                    <th>Format</th>
+                    <td>{{ project.format }}</td>
+                </tr>
+                <tr>
+                    <th>Duration</th>
+                    <td>{{ project.duration }}</td>
+                </tr>
+                <tr>
+                    <th>Production</th>
+                    <td>{{ project.production }}</td>
+                </tr>
+                <tr>
+                    <th>Broadcast</th>
+                    <td>{{ project.broadcast }}</td>
+                </tr>
+                <tr>
+                    <th>Segment_number</th>
+                    <td>{{ project.segmentNumber }}</td>
+                </tr>
+                <tr>
+                    <th>Executive_production</th>
+                    <td>{{ project.executiveProduction }}</td>
+                </tr>
+                <tr>
+                    <th>Delegated_production</th>
+                    <td>{{ project.delegatedProduction }}</td>
+                </tr>
+                <tr>
+                    <th>Sponsor</th>
+                    <td>{{ project.sponsor }}</td>
+                </tr>
+                <tr>
+                    <th>Producer</th>
+                    <td>{{ project.producer }}</td>
+                </tr>
+                <tr>
+                    <th>Executive_producer</th>
+                    <td>{{ project.executiveProducer }}</td>
+                </tr>
+                <tr>
+                    <th>Director</th>
+                    <td>{{ project.director }}</td>
+                </tr>
+                <tr>
+                    <th>Production_manager</th>
+                    <td>{{ project.productionManager }}</td>
+                </tr>
+                <tr>
+                    <th>Production_administrator</th>
+                    <td>{{ project.productionAdministrator }}</td>
+                </tr>
+                <tr>
+                    <th>Production_assistant</th>
+                    <td>{{ project.productionAssistant }}</td>
+                </tr>
+                <tr>
+                    <th>Casting_director</th>
+                    <td>{{ project.castingDirector }}</td>
+                </tr>
+                <tr>
+                    <th>Distribution_director</th>
+                    <td>{{ project.distributionDirector }}</td>
+                </tr>
+                <tr>
+                    <th>Casting_assistant</th>
+                    <td>{{ project.castingAssistant }}</td>
+                </tr>
+                <tr>
+                    <th>Lead_assistant</th>
+                    <td>{{ project.leadAssistant }}</td>
+                </tr>
+                <tr>
+                    <th>Support</th>
+                    <td>{{ project.support }}</td>
+                </tr>
+                <tr>
+                    <th>Synopsis</th>
+                    <td>{{ project.synopsis }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="row">
+        {% if 'ROLE_ADMIN' not in artist.roles and 'ROLE_SUPER_ADMIN' not in artist.roles %}
+            {% if artist in project.candidates %}
+                <a href="{{ path('artist_cancel_apply', {'id': project.id}) }}">Annuler ma candidature</a>
+            {% elseif artist not in project.candidates and artist not in project.artists %}
+                <a href="{{ path('artist_apply_casting', {'id': project.id}) }}">Candidater</a>
+            {% endif %}
+        {% endif %}
+        </div>
+
+        {% if 'ROLE_ADMIN' in artist.roles or 'ROLE_SUPER_ADMIN' in artist.roles %}
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <a class="btn btn-primary btn-block" href="{{ path('project_edit', {'id': project.id}) }}">Modifier</a>
+                </div>
+                <div class="col-lg-6 col-12">
+                    {{ include('project/_delete_form.html.twig') }}
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <h1>Liste des participants à {{ project.title }}</h1>
+            </div>
+            <div class="row justify-content-around">
+                {% for artist in project.artists %}
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <a class="card_profil" href="{{ path('artist_show_admin', {'id': artist.id}) }}">
+                            <div class="card mb-4">
+                                <img src="{{ asset('assets/images/upload/photos/')~ artist.portraitPictureName1 }}"
+                                     class="card-img-top" alt="portrait1">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ artist.firstname }} {{ artist.marriedName }} {{ artist.birthName }}</h5>
+                                    <p class="card-text">
+                                        <br>{{ artist.gender }}
+                                        <br>{{ artist.birthdate | age }} ans
+                                        <br>{{ artist.city }}
+                                        <br>{{ artist.phone }}
+                                        <br>{{ artist.email }}
+                                    </p>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-primary btn-block" href="{{ path('management_contract', {'artist': artist.id, 'project': project.id}) }}" class="btn btn-primary">Contrat</a>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                {% endfor %}
+            </div>
+
+            <div class="row justify-content-center">
+                <h1>Liste des candidats pour ce casting</h1>
+            </div>
+            <div class="row justify-content-around">
+                {% for candidate in project.candidates %}
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <a class="card_profil" href="{{ path('artist_show_admin', {'id': candidate.id}) }}">
+                            <div class="card mb-4">
+                                <img src="{{ asset('assets/images/upload/photos/')~ candidate.portraitPictureName1 }}"
+                                     class="card-img-top" alt="portrait1">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ candidate.firstname }} {{ candidate.marriedName }} {{ candidate.birthName }}</h5>
+                                    <p class="card-text">
+                                        <br>{{ candidate.gender }}
+                                        <br>{{ candidate.birthdate | age }} ans
+                                        <br>{{ candidate.city }}
+                                        <br>{{ candidate.phone }}
+                                        <br>{{ candidate.email }}
+                                    </p>
+                                </div>
+                                <div class="row card-body">
+                                    <div class="col-lg-6 col-12">
+                                        <a href="{{ path('application_validation', {'artist': candidate.id, 'project': project.id, 'id': project.id}) }}"
+                                            class="btn btn-primary btn-block">Valider</a>
+                                    </div>
+                                    <div class="col-lg-6 col-12">
+                                        <a href="{{ path('application_denial', {'artist': candidate.id, 'project': project.id, 'id': project.id}) }}"
+                                           class="btn btn-primary btn-block">Refuser</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row justify-content-center">
+                <h1>Ajouter un participant au casting</h1>
+            </div>
+            <div class="row justify-content-center">
+                {{ form_start(form) }}
+                    {{ form_widget(form.artists) }}
+                    <div class="col-12">
+                        <button class="btn btn-primary btn-block">{{ button_label|default('Valider') }}</button>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

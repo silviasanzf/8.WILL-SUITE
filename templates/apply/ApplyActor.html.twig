@@ -1,0 +1,31 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}Candidature{% endblock %}
+
+{% block body %}
+
+    <div class="container contHome">
+        {{ form_start(form) }}
+        <div class="row justify-content">
+            <div class="col-6">
+                {{ form_row(form.jobs, { 'label': "Quel type d'emploi ou situations acceptez vous? (cochez pour 'oui')" }) }}
+            </div>
+            <div class="col-6">
+                {{ form_row(form.sectorJobs, { 'label': 'Dans quel secteur?' }) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <a class="btn btn-primary btn-block" href="{{ path('apply_Physical', {'role' : artist.roles.0 }) }}">
+                    <i class="fas fa-chevron-left"></i> {{ button_label|default(' Etape précédente') }}
+                </a>
+            </div>
+            <div class="col-lg-6 col-12">
+                <button class="btn btn-primary btn-block">
+                    {{ button_label|default('Etape suivante') }} <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

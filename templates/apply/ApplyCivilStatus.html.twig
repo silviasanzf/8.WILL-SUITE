@@ -1,0 +1,143 @@
+{% extends 'baseApply.html.twig' %}
+{% block title %}Candidature{% endblock %}
+{% block body %}
+    <div class="container contHome">
+        {{ form_start(form) }}
+        <div class="row justify-content-between">
+            <div class="col-lg-3 col-12">
+                {{ form_row(form.gender, { 'label': 'Genre' }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.pseudonym, { 'label': 'Pseudonyme' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.firstname, { 'label': 'Prénom' }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.birthName, { 'label': 'Nom (de naissance)' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.marriedName, { 'label': 'Nom marital' }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.nationality, { 'label': 'Nationnalité' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.birthDate, { 'label': 'Date de naissance (au format: dd-MM-yyyy)' }) }}
+            </div>
+
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.birthCity, { 'label': 'Ville de naissance' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.birthDept, { 'label': 'Département de naissance' }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.birthCountry, { 'label': 'Pays de naissance' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+
+                    {{ form_row(form.maritalStatus, { 'label': 'Situation familiale' }) }}
+
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.dependentChild, { 'label': "Nombre d'enfants à charge" }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-6">
+                {{ form_row(form.lastMedicalVisit, { 'label': 'Date de votre dernière visite médicale' }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.socialSecurityNo, { 'label': 'Numéro de sécurité sociale' }) }}
+            </div>
+        </div>
+        <h4>Adresse actuelle:</h4>
+        <div class="row justify-content">
+            <div class="col space-around">
+                {{ form_row(form.address, { 'label': 'Adresse: N°, rue, App.' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-4 space-around">
+                {{ form_row(form.zipCode, { 'label': 'Code Postal' }) }}
+            </div>
+            <div class="col-8 space-around">
+                {{ form_row(form.city, { 'label': 'Ville' }) }}
+            </div>
+        </div>
+        <h4>Adresse fiscale, si différente:</h4>
+        <div class="row justify-content">
+            <div class="col space-around">
+                {{ form_row(form.taxAddress, { 'label': 'Adresse: N°, rue, App.' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-4 space-around">
+                {{ form_row(form.zipCodeTax, { 'label': 'Code Postal' }) }}
+            </div>
+            <div class="col-8 space-around">
+                {{ form_row(form.taxCity, { 'label': 'Ville' }) }}
+            </div>
+        </div>
+        <h4>Si vous possédez un titre de séjour:</h4>
+        <div class="row justify-content">
+            <div class="col-8 space-around">
+                {{ form_row(form.residentPermitNo, { 'label': 'Numéro de titre de séjour' }) }}
+            </div>
+            <div class="col-4 space-around">
+                {{ form_row(form.expiryDateResident, { 'label': 'Date de fin de validité' }) }}
+            </div>
+        </div>
+        <h4>Informations de contact:</h4>
+        <div class="row justify-content">
+            <div class="col space-around">
+                {{ form_row(form.email, { 'label': 'email', 'value' : app.user.email }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.phone, { 'label': 'Téléphone mobile' }) }}
+
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.homePhone, { 'label': 'Téléphone fixe' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-4 col-12">
+                {{ form_row(form.intermittent, { 'label': "Statut d'intermittent" }) }}
+            </div>
+
+            <div class="col-lg-8 col-12">
+                {{ form_row(form.showNo, { 'label': 'Numéro de congés spectacle' }) }}
+            </div>
+        </div>
+        <h4>Permis et transports:</h4>
+        <div class="row justify-content">
+            <div class="col-6 space-around">
+                {{ form_row(form.drivingLicences, {'label': 'Permis:'}) }}
+            </div>
+            <div class="col-6 space-around">
+                {{ form_row(form.transports, { 'label': 'Transport(s):' }) }}
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col space-around">
+                <button class="btn btn-primary btn-block">{{ button_label|default('Etape suivante ') }}<i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+

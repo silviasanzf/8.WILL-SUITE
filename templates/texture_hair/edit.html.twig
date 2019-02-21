@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit TextureHair{% endblock %}
+
+{% block body %}
+    <h1>Edit TextureHair</h1>
+
+    {{ include('texture_hair/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('texture_hair_index') }}">back to list</a>
+
+    {{ include('texture_hair/_delete_form.html.twig') }}
+{% endblock %}

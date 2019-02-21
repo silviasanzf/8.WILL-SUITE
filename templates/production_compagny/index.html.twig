@@ -1,0 +1,65 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}Sociétés de production{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <h1>Liste des sociétés de production</h1>
+        </div>
+
+        <table class="table">
+            <thead class="text-center">
+                <tr>
+                    <th>Nom</th>
+                    <th>Adresse</th>
+                    <th>Code postal</th>
+                    <th>Ville</th>
+                    <th>Téléphone</th>
+                    <th>Email</th>
+                    <th>Statut</th>
+                    <th>Siret</th>
+                    <th>Ape</th>
+                    <th>Naf</th>
+                    <th>Capital</th>
+                    <th>PDG</th>
+                    <th>Logo</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+            {% for production_compagny in production_compagnies %}
+                <tr>
+                    <td>{{ production_compagny.name }}</td>
+                    <td>{{ production_compagny.address }}</td>
+                    <td>{{ production_compagny.zipCode }}</td>
+                    <td>{{ production_compagny.city }}</td>
+                    <td>{{ production_compagny.phone }}</td>
+                    <td>{{ production_compagny.email }}</td>
+                    <td>{{ production_compagny.status }}</td>
+                    <td>{{ production_compagny.siret }}</td>
+                    <td>{{ production_compagny.ape }}</td>
+                    <td>{{ production_compagny.naf }}</td>
+                    <td>{{ production_compagny.capital }}</td>
+                    <td>{{ production_compagny.ceo }}</td>
+                    <td>{{ production_compagny.logo }}</td>
+                    <td>
+                        <a href="{{ path('production_compagny_show', {'id': production_compagny.id}) }}">show</a>
+                        <a href="{{ path('production_compagny_edit', {'id': production_compagny.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="15">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-12">
+                <a class="btn btn-primary btn-block" href="{{ path('production_compagny_new') }}">Ajouter une société de production</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

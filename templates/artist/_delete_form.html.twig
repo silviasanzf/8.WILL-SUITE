@@ -1,0 +1,9 @@
+<form method="post" action="{{ path('artist_delete', {'id': artist.id}) }}"
+      onsubmit="return confirm('Etes-vous bien sûr de vouloir supprimer ce profil? L\'ensemble des informations seront effacées, cette action est irréversible.');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ artist.id) }}">
+
+
+        <button class="btn-lg" style="border-radius: 0;width: 250px;margin-top:20px;">Supprimer</button>
+</form>
+

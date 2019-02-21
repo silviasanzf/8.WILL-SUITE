@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container error">
+        <div class="row justify-content-center">
+            <div class="col-sm-6 error-col">
+                <h1><strong>Coupé,<br> on recommence !</strong></h1>
+                <br>
+                <h3>Scène 404 , 2ème essai.</h3>
+                <h3>C'est a vous !</h3>
+                <p class="fleche-img">
+                    <img src="{{ asset('assets/images/site/fleche.png') }}" alt="fleche">
+                    <a
+                            href="#" class="btn btn-default">PAGE D'ACCUEIL
+                    </a>
+                </p>
+            </div>
+            <div class="col-sm-6 clap-img">
+                <img src="{{ asset('assets/images/site/clap.png') }}" alt="clap">
+            </div>
+        </div>
+    </div>
+{% endblock %}

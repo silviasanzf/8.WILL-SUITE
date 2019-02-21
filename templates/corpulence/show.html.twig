@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Corpulence{% endblock %}
+
+{% block body %}
+    <h1>Corpulence</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ corpulence.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ corpulence.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('corpulence_index') }}">back to list</a>
+
+    <a href="{{ path('corpulence_edit', {'id': corpulence.id}) }}">edit</a>
+
+    {{ include('corpulence/_delete_form.html.twig') }}
+{% endblock %}

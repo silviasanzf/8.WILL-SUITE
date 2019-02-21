@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+</head>
+<body class="apply">
+<header>
+    <div class="container">
+    </div>
+</header>
+<div class="container contHome">
+    <div class="row justify-content-center">
+        <img class="logoCand" src="{{ asset('assets/images/site/whitelogo.png') }}">
+    </div>
+    {% if app.request.get('_route') not in ['apply_home', 'login', 'user_registration', 'profil_artist_show'] %}
+        {% include '_applyStep.html.twig' %}
+    {% endif %}
+</div>
+{% block body %}{% endblock %}
+<footer>
+    <div class="container footcont">
+
+    </div>
+</footer>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+</body>
+
+</html>
+

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hair index{% endblock %}
+
+{% block body %}
+    <h1>Hair index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Length</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hair in hairs %}
+            <tr>
+                <td>{{ hair.id }}</td>
+                <td>{{ hair.length }}</td>
+                <td>
+                    <a href="{{ path('hair_show', {'id': hair.id}) }}">show</a>
+                    <a href="{{ path('hair_edit', {'id': hair.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('hair_new') }}">Create new</a>
+{% endblock %}

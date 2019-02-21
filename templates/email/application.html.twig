@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <h1>{{ artist.firstname }} {{ artist.birthname }} a postulé pour le casting de {{ project.title }}</h1>
+    <p>
+       Consultez le profil du candidat <a href="{{ absolute_url(path('artist_show_admin', {'id' : artist.id })) }}">ici</a>
+    </p>
+    <p>
+        Consultez la fiche de projet <a href="{{ absolute_url(path('project_show', {'id' : project.id })) }}">ici</a>
+    </p>
+</body>
+</html>

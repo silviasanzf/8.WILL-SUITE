@@ -1,0 +1,31 @@
+easy_admin:
+    entities:
+        # List the entity class name you want to manage
+        - App\Entity\Artist
+        - App\Entity\ColorHair
+        - App\Entity\Corpulence
+        - App\Entity\DrivingLicence
+        - App\Entity\Eye
+        - App\Entity\Gender
+        - App\Entity\Hair
+        - App\Entity\Hairiness
+        - App\Entity\Job
+        - App\Entity\Physical
+        - App\Entity\ProductionCompagny
+        - App\Entity\Project
+        - App\Entity\SectorJob
+        - App\Entity\TextureHair
+        - App\Entity\Transformation
+        - App\Entity\Transport
+
+    site_name: <img src="/assets/images/site/whitelogo.png">
+    #site_name: '<em style="color: white;">The Will</em><em style="font-size: 60%; color: white;"> Administration</em>'
+
+    design:
+        brand_color: '#8c8c6e'
+        assets:
+            css:
+                - '/build/admin.css'
+
+
+

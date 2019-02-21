@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ColorHair{% endblock %}
+
+{% block body %}
+    <h1>Edit ColorHair</h1>
+
+    {{ include('color_hair/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('color_hair_index') }}">back to list</a>
+
+    {{ include('color_hair/_delete_form.html.twig') }}
+{% endblock %}

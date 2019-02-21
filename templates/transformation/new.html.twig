@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Transformation{% endblock %}
+
+{% block body %}
+    <h1>Create new Transformation</h1>
+
+    {{ include('transformation/_form.html.twig') }}
+
+    <a href="{{ path('transformation_index') }}">back to list</a>
+{% endblock %}

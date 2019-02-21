@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Transformation{% endblock %}
+
+{% block body %}
+    <h1>Edit Transformation</h1>
+
+    {{ include('transformation/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('transformation_index') }}">back to list</a>
+
+    {{ include('transformation/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Corpulence{% endblock %}
+
+{% block body %}
+    <h1>Create new Corpulence</h1>
+
+    {{ include('corpulence/_form.html.twig') }}
+
+    <a href="{{ path('corpulence_index') }}">back to list</a>
+{% endblock %}

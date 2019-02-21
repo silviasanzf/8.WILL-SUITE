@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <h1>{{ artist.firstname }} {{ artist.birthname }} fait maintenant partie de vos figurants !</h1>
+    <p>
+        Consultez son profil <a href="{{ absolute_url(path('artist_show_admin', {'id' : artist.id })) }}">ici</a>.
+    </p>
+</body>
+</html>

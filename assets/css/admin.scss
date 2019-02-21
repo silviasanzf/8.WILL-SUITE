@@ -1,0 +1,43 @@
+:root {
+    /* make the backend contents as wide as the browser window */
+    --body-max-width: 100%;
+    /* change the background color of the <body> */
+    --body-bg: black;
+    /* make the base font size smaller */
+    --font-size-base: 13px;
+    /* remove all border radius to make corners straight */
+    --border-radius: 0px;
+}
+
+.wrapper {
+    background-color: #1d1d1d;
+}
+span {
+    color: #8c8c6e;
+}
+.active {
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+}
+.content {
+    opacity :0.9;
+    margin-top: 3%;
+}
+.navbar-custom-menu {
+    background-image: url(/assets/images/site/CALIFORNIA_1089.jpg);
+    height: 25vh;
+}
+.user {
+    visibility: hidden ;
+}
+.badge-secondary {
+    background-color: white;
+}
+.action-edit {
+    color: mediumseagreen;
+}
+.action-edit:hover {
+    color: darkgreen;
+}

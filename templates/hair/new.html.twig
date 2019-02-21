@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Hair{% endblock %}
+
+{% block body %}
+    <h1>Create new Hair</h1>
+
+    {{ include('hair/_form.html.twig') }}
+
+    <a href="{{ path('hair_index') }}">back to list</a>
+{% endblock %}

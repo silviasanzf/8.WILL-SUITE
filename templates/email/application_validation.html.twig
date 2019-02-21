@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <h1>{{ artist.firstname }}, vous faites maintenant partie de la troupe de {{ project.title }}</h1>
+    <p>
+        Consultez la fiche de projet <a href="{{ absolute_url(path('project_show', {'id' : project.id })) }}">ici</a>
+    </p>
+</body>
+</html>

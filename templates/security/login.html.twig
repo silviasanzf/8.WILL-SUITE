@@ -1,0 +1,38 @@
+{% extends 'baseLog.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1>Connection</h1>
+        </div>
+        <div class="row justify-content-center">
+            <form method="post" class="col-lg-6 col-12">
+                <div class="row login">
+                    <label for="inputEmail" class="sr-only">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                </div>
+                <div class="row">
+                    <label for="inputPassword" class="sr-only">Mot de passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                    </label>
+                </div>
+                <div class="row">
+                    <button class="btn btn-block btn-primary" type="submit">Se connecter</button>
+                </div>
+                <div class="row">
+                    <p>
+                        Pas encore inscrit ? &nbsp;  <a href="{{ path('user_registration') }}">Je m'incris !</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

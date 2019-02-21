@@ -1,0 +1,23 @@
+{% extends 'baseLog.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-12">
+                {{ form_start(form) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.plainPassword.first) }}
+                {{ form_row(form.plainPassword.second) }}
+                {{ form_row(form.termsAccepted) }}
+
+                <button class="btn btn-primary btn-block" type="submit">M'enregistrer!</button>
+                {{ form_end(form) }}
+                <p>
+                    Déja inscrit ? &nbsp;  <a href="{{ path('login') }}">Je me connecte !</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

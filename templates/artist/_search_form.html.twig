@@ -1,0 +1,109 @@
+    <div>
+        {{ form_start(form) }}
+        <div class="row justify-content">
+            <div class="col-lg-3 col-4">
+                {{ form_row(form.name) }}
+            </div>
+            <div class="col-lg-3 col-4">
+                {{ form_row(form.aleatory) }}
+            </div>
+            <div class="col-lg-3 col-6">
+                {{ form_row(form.progress) }}
+            </div>
+            <div class="col-lg-3 col-6">
+                {{ form_row(form.location) }}
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-lg-3 col-6">
+                {{ form_row(form.isactif) }}
+            </div>
+            <div class="col-lg-3 col-6">
+                {{ form_row(form.professional) }}
+            </div>
+            <div class="col-lg-3 col-6">
+                {{ form_row(form.intermittent) }}
+            </div>
+            <div class="col-lg-3 col-6">
+                {{ form_row(form.gender) }}
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-lg-2 col-6">
+                {{ form_row(form.minSize) }}
+            </div>
+            <div class="col-lg-2 col-6">
+                {{ form_row(form.maxSize) }}
+            </div>
+            <div class="col-lg-2 col-6">
+                {{ form_row(form.minWeight) }}
+            </div>
+            <div class="col-lg-2 col-6">
+                {{ form_row(form.maxWeight) }}
+            </div>
+            <div class="col-lg-2 col-6">
+                {{ form_row(form.ageMin) }}
+            </div>
+            <div class="col-lg-2 col-6">
+                {{ form_row(form.ageMax) }}
+            </div>
+        </div>
+        <div id="accordion">
+            <div class="row justify-content-center" id="headingOne">
+                <h5>
+                    <a class="btn btn-link collapsed searchButton" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Plus de critères &nbsp <i class="fas fa-caret-down"></i>
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="row justify-content-between">
+                    <div class="col-lg-5 col-12">
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                {{ form_row(form.corpulence, { 'label': 'Corpulence' }) }}
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                {{ form_row(form.eye, { 'label': 'Couleur des yeux' }) }}
+                            </div>
+                            <div class="col-lg-6 col-6">
+                                {{ form_row(form.physical , { 'label': 'Type Physique' }) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-12">
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                {{ form_row(form.hairiness, { 'label': 'Pilosité' }) }}
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                {{ form_row(form.colorHair, { 'label': 'Couleur de cheveux' }) }}
+                            </div>
+                            <div class="col-lg-6 col-6">
+                                {{ form_row(form.hair, { 'label': 'Longueur' }) }}
+                            </div>
+                            <div class="col-lg-6 col-6">
+                                {{ form_row(form.textureHair,{ 'label': 'Texture' }) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                {{ form_row(form.sectorJob,{ 'label': 'Secteur' }) }}
+                            </div>
+                            <div class="col-12">
+                                {{ form_row(form.transformation,{ 'label': 'Transformations' }) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <button class="btn-primary btn btn-block">{{ button_label|default('Rechercher') }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}

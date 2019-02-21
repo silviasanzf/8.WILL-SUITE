@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Physical{% endblock %}
+
+{% block body %}
+    <h1>Physical</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ physical.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ physical.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('physical_index') }}">back to list</a>
+
+    <a href="{{ path('physical_edit', {'id': physical.id}) }}">edit</a>
+
+    {{ include('physical/_delete_form.html.twig') }}
+{% endblock %}

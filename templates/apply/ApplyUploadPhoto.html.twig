@@ -1,0 +1,48 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}Candidature{% endblock %}
+
+{% block body %}
+
+    <div class="container contHome">
+        <div class="row">
+            <p>Formats recommandés: jpg, jpeg, png.</p>
+            <p>Les photos 1 et 2 doivent être des PORTRAITS et la photo 3 une photo de PLAIN PIED. La photo 1 sera aussi
+                votre photo de profil générale.</p>
+
+            <p>Pour remplacer une photo, vous pouvez refaire le téléchargement, la seconde photo remplacera la
+                première.</p>
+            
+        </div>
+        {{ form_start(form) }}
+        <div class="row justify-content-center">
+            <div class="col-4">
+                {{ form_row(form.portraitPictureFile1) }}
+
+            </div>
+            <div class="col-4">
+                {{ form_row(form.portraitPictureFile2) }}
+
+            </div>
+            <div class="col-4">
+                {{ form_row(form.fullPictureFile) }}
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <a class="btn btn-primary btn-block" href="{{ path('apply_Actor', {'role' : artist.roles.0 }) }}">
+                    <i class="fas fa-chevron-left"></i> {{ button_label|default('Etape précédente') }}
+                </a>
+            </div>
+            <div class="col-lg-6 col-12">
+                <button type="submit" class="btn btn-primary btn-block">
+                    {{ button_label|default('Etape suivante ') }}<i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}

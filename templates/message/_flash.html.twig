@@ -1,0 +1,14 @@
+<div class="row justify-content-center">
+    {% for messages in app.flashes %}
+        {#todo:refactoriser#}
+        {% for message in messages %}
+            <div class="col-lg-8 col-12">
+                <div class="alert alert-success" role="alert">
+                    <div class="flash-success">
+                        <i class="fas fa-check-circle"></i> {{ message }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>

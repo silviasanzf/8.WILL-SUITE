@@ -1,0 +1,40 @@
+{% extends 'baseApply.html.twig' %}
+    {% block title %}Recherche profils{% endblock %}
+    {% block body %}
+
+        <div class="container-fluid">
+            <div class="search">
+                {% include'artist/_search_form.html.twig' %}
+            </div>
+            <div class="row results">
+                <div class="col-12">
+                    <h1>Résultat de la recherche: {{ artists.getTotalItemCount }} profil(s)</h1>
+                </div>
+            </div>
+            <div class="row">
+                {% for artist in artists %}
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <a class="card_profil" href="{{ path('artist_show_admin', {'id': artist.id}) }}">
+                            <div class="card mb-4">
+                                <img src="{{ asset('assets/images/upload/photos/')~ artist.portraitPictureName1 }}"
+                                     class="card-img-top" alt="portrait1">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ artist.firstname }} {{ artist.marriedName }} {{ artist.birthName }}</h5>
+                                    <p class="card-text">
+                                        <br>{{ artist.gender }}
+                                        <br>{{ artist.birthdate | age }} ans
+                                        <br>{{ artist.city }}
+                                        <br>{{ artist.phone }}
+                                        <br>{{ artist.email }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row justify-content-end">
+                {{ knp_pagination_render(artists) }}
+            </div>
+        </div>
+    {% endblock %}

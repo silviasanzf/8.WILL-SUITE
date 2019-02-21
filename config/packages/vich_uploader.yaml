@@ -1,0 +1,19 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        photo_image:
+            uri_prefix: /assets/images/upload/photos
+            upload_destination: '%kernel.project_dir%/public/assets/images/upload/photos'
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+            namer: App\Service\FileNamer
+
+        document:
+            uri_prefix: /assets/images/upload/documents
+            upload_destination: '%kernel.project_dir%/public/assets/images/upload/documents'
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+            namer: App\Service\FileNamer

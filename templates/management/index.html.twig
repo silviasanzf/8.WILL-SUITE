@@ -1,0 +1,59 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}Gestion{% endblock %}
+
+{% block body %}
+
+    <div class="container contHome">
+    <div class="message-place">
+            {% include 'message/_flash.html.twig' %}
+    </div>
+        <div class="row justify-content-center">
+            <h2> Espace d'administration</h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="adminHome col-3">
+                <a class="btn btn-primary btn-block"
+                   href="{{ path('production_compagny_index', {'role' : artist.roles.0 }) }}">
+                    Productions
+                </a>
+            </div>
+            <div class="adminHome col-3">
+                <a class="btn btn-primary btn-block"
+                   href="{{ path('project_index', {'role' : artist.roles.0 }) }}">
+                    Films / Projets
+                </a>
+            </div>
+            <div class="adminHome col-3">
+                <a class="btn btn-primary btn-block"
+                   href="{{ path('artist_index', {'role' : artist.roles.0 }) }}">
+                    Profils
+                </a>
+            </div>
+            <div class="adminHome col-3">
+                <a class="btn btn-primary btn-block"
+                   href="{{ path('validations_index', {'role' : artist.roles.0 }) }}">
+                    Acteurs à valider
+                </a>
+            </div>
+            <div class="adminHome col-4">
+                <a class="btn btn-primary btn-block"
+                   href="#">
+                    Contacts
+                </a>
+            </div>
+            <div class="adminHome col-4">
+                <a class="btn btn-primary btn-block"
+                   href="#">
+                    Agenda
+                </a>
+            </div>
+            <div class="adminHome col-4">
+                <a class="btn btn-primary btn-block"
+                   href="#">
+                    Planning
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

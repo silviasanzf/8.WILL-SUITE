@@ -1,0 +1,59 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}Video{% endblock %}
+
+{% block body %}
+    <div class="container contHome">
+        {{ form_start(form) }}
+        <div class="row">
+            <p>Si vous êtes ACTEUR PROFESSIONNEL, la vidéo est obligatoire et nécessaire pour la validation profil.</p>
+            <p>Si vous êtes FIGURANT, la vidéo n'est pas obligatoire mais vous pouvez en partager une si vous le souhaitez.</p>
+
+            <p>Pour partager une vidéo, vous devez utiliser un des trois hébergeurs suivants:</p>
+            https://www.youtube.com </br>
+            https://vimeo.com <br>
+            https://www.dailymotion.com<br>
+
+            <p>Vous pouvez utiliser un compte gratuit et poster en mode public ou privé.</p>
+            <p>A partir de là, l'herbergeur vous proposera un LIEN DE PARTAGE à copier et coller ci-dessous.</p>
+
+            <p>La vidéo sera visible pour nous tant que vous la laisserez en ligne, si vous la supprimez, nous ne
+                pourrons plus y accéder.</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.video, { 'label': 'Collez votre lien vidéo' }) }}
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.validation_video, {
+                    'label': 'Valider le lien',
+                    'attr': {'class': 'btn btn-primary btn-block'}
+                    })
+                }}
+            </div>
+        </div>
+        <div class="row justify-content-center videoframe">
+            <iframe width="560" height="315" src="{{ keyLink }}" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <a class="btn btn-primary btn-block" href="{{ path('apply_upload_document', {'role' : artist.roles.0 }) }}">
+                    <i class="fas fa-chevron-left"></i> {{ button_label|default('Etape précédent') }}
+                </a>
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.validation_profil,{
+                    'label': 'Valider votre profil',
+                    'attr': {'class': 'btn btn-primary btn-block'}
+                    })
+                }}
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}

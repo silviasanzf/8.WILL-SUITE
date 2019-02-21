@@ -1,0 +1,99 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}Candidature{% endblock %}
+
+{% block body %}
+    <div class="container contHome">
+        <div class="row justify-content">
+            <div class="col-12">
+                <div class="jumbotron">
+                    <h1 class="display-4">Bienvenue sur votre espace de candidature !</h1>
+                    <p class="lead">
+                        Vous allez à présent pouvoir remplir votre formulaire de candidature.
+                    </p>
+                    <hr class="my-4">
+                    <div>
+                        <p>
+                            Le formulaire de candidature se découpe en six étapes pour les figurants, sept pour les
+                            acteurs professionnels. Les étapes communes sont les suivantes :
+                        </p>
+                        <p>
+                            <ul>
+                                <li>informations civiles </li>
+                                <li>parcours et expériences professionnels</li>
+                                <li>critères physiques </li>
+                                <li>projets souhaités </li>
+                                <li>téléversement de trois photos professionnelles </li>
+                                <li>téléversement des documents administratifs </li>
+                            </ul>
+                        </p>
+                        <p>
+                            Les acteurs professionnels devront en plus fournir le lien de leur vidéo de casting.
+                            De plus, leurs profils sont, contrairement à ceux des figurants, soumis à validation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="jumbotron">
+                    <h1 class="display-4">Pour faciliter la saisie</h1>
+                    <p class="lead">
+                        Vous aurez besoin de :
+                    </p>
+                    <p>
+                        <ul>
+                            <li>votre pièce d'identité</li>
+                            <li>votre titre de séjour si nationalité étrangère</li>
+                            <li>votre carte vitale</li>
+                            <li>votre CMB si intermittent</li>
+                            <li>votre CV à jour</li>
+                            <li>3 photos de vous : 2 portraits, 1 de plain pied</li>
+                            <li>
+                                une vidéo de casting postée sur YouTube, Dailymotion ou Viméo si acteur professionnel
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        Vous devez disposer du pdf de ces documents administratifs ainsi que du PDF de votre RIB.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="jumbotron justify-content">
+                    <h1 class="display-4">La sauvegarde de votre profil</h1>
+                    <p class="lead">
+                        Votre profil ne sera complet qu'une fois toutes les étapes complétées. Une sauvegarde est
+                        réalisée à chaque étape, vous permettant de revenir où vous vous êtes arrêtés à tout moment.
+                        Lorsque la dernière étape est validée, votre espace utilisateur est créé : les figurants y ont
+                        accès immédiatement, les acteurs professionnels doivent attendre la validation de leur profil
+                        par la société The Will.
+                    </p>
+                    <hr class="my-4">
+                    <p>
+                        La sauvegarde par étape vous permet de pouvoir remplir ce formulaire en plusieurs fois.
+                        Néanmoins, lorsque vous revenez sur votre compte, votre candidature ne reprend qu'à la
+                        dernière étape validée : si vous quittez le formulaire au milieu d'une étape, les modifications
+                        ne sont pas prises en compte.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <h1> Et... ACTION !</h1>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                <a href="{{ path('apply_role', {'role' : 'actor'}) }}">
+                    <button type="submit" value="acteur" class="btn btn-primary btn-block">Je suis un acteur</button>
+                </a>
+            </div>
+            <div class="col-lg-6 col-12">
+                <a href="{{ path('apply_role', {'role' : 'extra'}) }}">
+                    <button type="submit" value="figurant" class="btn btn-primary btn-block">Je suis un figurant</button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

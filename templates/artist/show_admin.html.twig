@@ -1,0 +1,345 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}Bonjour{% endblock %}
+
+{% block body %}
+    <div class="container profil_artist" style="text-align: center;">
+        <div class="row">
+            <div class="col-lg-6 ">
+                {% if artist.progress != 100 %}
+                    {{ form_start(form) }}
+                    <div class="row justify-content-center">
+                        {{ form_row(form.validation, {
+                            'label': 'Valider le profil du candidat',
+                            'attr': {'class': 'btn btn-primary btn-block'}
+                        }) }}
+                    </div>
+                    {{ form_end(form) }}
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="row">
+
+                    <div class="col-lg-12 profil_picture">
+                        <img src="{{ asset('assets/images/upload/photos/')~ artist.portraitPictureName1 }}" width="250"
+                             alt="Placeholder">
+                    </div>
+
+                    <div class="title col-lg-12">
+                        <h5>{{ artist.firstname }} <br> {{ artist.birthName }}</h5>
+                    </div>
+                    <div class="title col-lg-12">
+
+                        {% if artist.professional == '0' %}FIGURANT {% endif %}
+                        {% if artist.professional == '1' %}PROFESSIONNEL {% endif %}
+
+                    </div>
+                </div>
+                <div class="col-lg-12 ">
+                    <a href="{{ path('artist_download_admin', {'id': artist.id}) }}"><i class="fas fa-download"></i>ADMINISTRATIF</a>
+                </div>
+                <div class="col-lg-12 ">
+                    <a href="{{ path('artist_download_physical', {'id': artist.id}) }}"><i class="fas fa-download"></i>PHYSIQUE</a>
+                </div>
+                <div class="col-lg-12 profil_button">
+                    <a href="{{ path('apply_upload_photo', {'role' : artist.roles.0 }) }}"
+                       class="btn btn-primary btn-lg" style="width: 250px;margin-top: 20px;">Photos</a>
+                </div>
+                <div class="col-lg-12 profil_button">
+                    <a href="{{ path('apply_id_video', {'role' : artist.roles.0 }) }}" class="btn btn-primary btn-lg"
+                       style="width: 250px;margin-top: 20px;">Video</a>
+                </div>
+                <div class="col-lg-12 profil_button">
+                    <a href="{{ path('apply_upload_document', {'role' : artist.roles.0 }) }}" class="btn btn-primary btn-lg" style="width: 250px;margin-top:20px;">Documents</a>
+                </div>
+                <div class="col-lg-12 profil_button">
+                    <a href="{{ path('apply_CivilStatus', {'role' : artist.roles.0 }) }}" class="btn btn-primary btn-lg"
+                       style="width: 250px;margin-top:40px;">Modifier</a>
+                </div>
+                <div class="col-lg-12 profil_button">
+                    {{ include('artist/_delete_form.html.twig') }}
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-8 profil_tab">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="perso-tab" data-toggle="tab"
+                           href="#info_personnel" role="tab" aria-controls="home" aria-selected="true">Informations
+                            personnelles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pro-tab" data-toggle="tab"
+                           href="#info_professionnel" role="tab" aria-controls="contact"
+                           aria-selected="false">Formation Expériences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="physique-tab" data-toggle="tab"
+                           href="#info_physique" role="tab" aria-controls="profile" aria-selected="false">Caractéristiques physiques</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="complement-tab" data-toggle="tab"
+                           href="#info_complementaire" role="tab" aria-controls="contact" aria-selected="false">Informations
+                            complémentaires</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="info_personnel" role="tabpanel"
+                         aria-labelledby="home-tab">
+                        <p>
+                            {{ artist.firstname }} <br>
+                            {{ artist.birthName|upper }} <br>
+                            {{ artist.pseudonym }} <br>
+                            {{ artist.gender }}
+                        </p>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <p>
+                            Né(e) le {{ artist.birthDate | date('d/m/Y') }}
+                            à {{ artist.birthCity }} ({{ artist.birthDept }})
+                            - {{ artist.birthCountry }} <br>
+                            Nationalité {{ artist.nationality }}
+                        </p>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <p>Nombre d'enfants à charge : {{ artist.dependentChild }}</p>
+                        <p>
+                            {% if artist.maritalStatus == '0' %}Célibataire {% endif %}
+                            {% if artist.maritalStatus == '1' %}Marié(e) {% endif %}
+                            {% if artist.maritalStatus == '2' %}Pacsé(e) {% endif %}
+                            {% if artist.maritalStatus == '3' %}Veuf-veuve {% endif %}
+                            {% if artist.maritalStatus == '4' %}Vis maritalement {% endif %}
+                        </p>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <p>
+                            {{ artist.address }} <br>
+                            {{ artist.zipCode }} {{ artist.city }}
+                        </p>
+                        <p>
+                            Tel :{{ artist.phone }} <br>
+                            Tel fixe : {{ artist.homePhone }}
+                        </p>
+                        <p>email: {{ artist.email }}</p>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                    </div>
+
+                    <div class="tab-pane fade" id="info_physique" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row justify-content">
+                            <div class="col-lg-6 col-12 ">
+                                <p>
+                                    TAILLE :{{ artist.height }}cm <br>
+                                    POIDS : {{ artist.weight }}kg <br>
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-12 ">
+                                <p>
+                                    CORPULENCE : {{ artist.corpulence }} <br>
+                                    TYPE PHYSIQUE : {{ artist.physical }} <br>
+                                </p>
+                            </div>
+                        </div>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <div class="row justify-content">
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    CHEVEUX<br>
+                                    Couleur : {{ artist.colorHair }} <br>
+                                    Longueur : {{ artist.hair }} <br>
+                                    Texture : {{ artist.textureHair }} <br>
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                YEUX <br>
+                                Couleur : {{ artist.eye }}<br>
+                                PILOSITE : {{ artist.hairiness }} <br>
+                            </div>
+                        </div>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <div class="row justify-content">
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    TOUR DE : <br>
+                                    Tête : {{ artist.headCirconference }}<br>
+                                    Poitrine : {{ artist.chestSize }} <br>
+                                    Taille : {{ artist.waistSize }} <br>
+                                    Hanches:{{ artist.hipSize }} <br>
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    TAILLE DE :<br>
+                                    Jupe : {{ artist.skirtSize }} <br>
+                                    Veste : {{ artist.jacketSize }} <br>
+                                    Pantalon : {{ artist.pantsSize }} <br>
+                                    Soutien-gorge : {{ artist.braSize }} Bonnet:
+                                    {% if artist.cupSize == '0' %}A {% endif %}
+                                    {% if artist.cupSize == '1' %}B {% endif %}
+                                    {% if artist.cupSize == '2' %}C {% endif %}
+                                    {% if artist.cupSize =='3' %}D {% endif %}
+                                    {% if artist.cupSize == '4' %}E {% endif %}
+                                    {% if artist.cupSize == '5' %}F {% endif %}
+                                    {% if artist.cupSize == '5' %}G ou + {% endif %} <br>
+                                </p>
+                            </div>
+                        </div>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <div class="row justify-content">
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    POINTURE : {{ artist.shoesSize }} <br>
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    SIGNE(S) DISTINCTIFS : {{ artist.distinctivesign }}
+                                </p>
+                            </div>
+                        </div>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <div class="row justify-content">
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    TRANSFORMATIONS ACCEPTEES : <br>
+                                    {% for transformations in artist.transformations %}
+                                <li>{{ transformations.type }} </li>
+                                {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="info_professionnel" role="tabpanel" aria-labelledby="contact-tab">
+                        <p>
+                            Ecole : {{ artist.school }} <br>
+                            Niveau de diplôme :
+                            {% if artist.levelDegree == '0' %}Aucun diplôme {% endif %}
+                            {% if artist.levelDegree == '1' %}BEP/CAP ou équivalent {% endif %}
+                            {% if artist.levelDegree == '2' %}BAC ou équivalent {% endif %}
+                            {% if artist.levelDegree == '3' %}BAC +2 {% endif %}
+                            {% if artist.levelDegree == '4' %}BAC+3 {% endif %}
+                            {% if artist.levelDegree == '5' %}BAC+4 et plus {% endif %}
+                        </p>
+                        <p>
+                            Description de diplôme: {{ artist.degree }}<br>
+                        </p>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <p>
+                            Experience(s) professionnelle(s) : {{ artist.experiences }} <br>
+                        </p>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <p>
+                            Conservatoire : {{ artist.conservatory }}<br>
+                            Sports pratiqués: {{ artist.practiceSports }}<br>
+                        </p>
+                    </div>
+
+                    <div class="tab-pane fade" id="info_complementaire" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="row justify-content">
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    Intermittence :
+                                    {{ ('' ~ artist.intermittent)|trans }}
+                                </p>
+                            </div>
+
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    Numéro de congés spectacle : {{ artist.showNo }}
+                                </p>
+                            </div>
+                        </div>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <div class="row justify-content">
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    Numéro permis de séjour : {{ artist.residentPermitNo }}
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    Date expiration : {{ artist.expiryDateResident|date('d/m/Y') }}
+                                </p>
+                            </div>
+                        </div>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <div class="row justify-content">
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    Type de permis : {% for drivingLicences in artist.drivingLicences %}
+                                <li>{{ drivingLicences.type }} </li> {% endfor %}
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    Moyen de transport: {% for transports in artist.transports %}
+                                <li>{{ transports.type }}</li> {% endfor %} <br>
+                                </p>
+                            </div>
+                        </div>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <div class="row justify-content">
+                            <p>
+                                Date dernière visite médicale : {{ artist.lastMedicalVisit | date('d/m/Y') }} <br>
+                                Numéro de sécurité sociale : {{ artist.socialSecurityNo }}
+                            </p>
+                        </div>
+                        <img src="{{ asset('assets/images/site/separatorBlack.png') }}" alt="separator">
+                        <div class="row justify-content">
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    EMPLOI(S)/SITUATION(S) ACCEPTEE(S) : {% for jobs in artist.jobs %}
+                                <li>{{ jobs.type }} </li> {% endfor %}
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <p>
+                                    SECTEURS ACCEPTES : {% for sectorJobs in artist.sectorJobs %}
+                                <li>{{ sectorJobs.type }} </li> {% endfor %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <div class="row justify-content-center">
+                    <h1>Liste des castings de {{ artist.firstname }}</h1>
+                </div>
+                <div class="row justify-content-around">
+                    <table class="table">
+                        <thead>
+                        <th>Titre</th>
+                        <th>Boite de production</th>
+                        <th>Format</th>
+                        <th>Durée de tournage</th>
+                        <th> </th>
+                        <th> </th>
+                        <th> </th>
+                        </thead>
+                        <tbody>
+                        {% for casting in artist.castings %}
+                            <tr>
+                                <td>{{ casting.title }}</td>
+                                <td>{{ casting.productionCompagny }}</td>
+                                <td>{{ casting.format }}</td>
+                                <td>{{ casting.duration }}</td>
+                                <td><a href="{{ path('project_show', {'id': casting.id}) }}">Détails</a></td>
+                                <td>
+                                    <a href="{{ path('application_validation', {'artist': artist.id, 'project': casting.id, 'id': casting.id}) }}" class="btn btn-primary">Valider</a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('application_denial', {'artist': artist.id, 'project': casting.id, 'id': casting.id}) }}" class="btn btn-primary">Refuser</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+    </div>
+{% endblock %}

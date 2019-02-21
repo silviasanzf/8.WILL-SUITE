@@ -1,0 +1,9 @@
+<form method="post" action="{{ path('artist_notactif', {'id': artist.id}) }}"
+      onsubmit="return confirm('Etes-vous bien sûr de vouloir désactiver votre profil? L\'ensemble des informations seront effacées par The Will dans un délai légal. Dans cette période vous pouvez réactiver votre profil via le formulaire de connexion avec vos identifiants habituels. Si vous choississez de déactiver votre profil, dès aujourd\'hui vous n\'apparaitrez plus dans les recherches et ne recevrez plus aucune proposition de la part de The Will.');">
+    <input type="hidden" name="_method" value="GET">
+
+
+
+        <button class="btn-lg" style="border-radius: 0;width: 250px;margin-top:20px;">Desactiver</button>
+</form>
+

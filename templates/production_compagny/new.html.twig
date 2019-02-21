@@ -1,0 +1,18 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}Nouvelle société de production{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+      <div class="message-place">
+          {% include "message/_flash.html.twig"%}
+      </div>
+      <div class="row justify-content-center">
+            <h1>Ajouter une société de production</h1>
+      </div>
+
+        {{ include('production_compagny/_form.html.twig') }}
+
+        <a href="{{ path('production_compagny_index') }}">back to list</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Transformation{% endblock %}
+
+{% block body %}
+    <h1>Transformation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ transformation.id }}</td>
+            </tr>
+            <tr>
+                <th>HairCut</th>
+                <td>{{ transformation.hairCut ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>HairColoration</th>
+                <td>{{ transformation.hairColoration ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ColorContactLens</th>
+                <td>{{ transformation.colorContactLens ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Wig</th>
+                <td>{{ transformation.wig ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('transformation_index') }}">back to list</a>
+
+    <a href="{{ path('transformation_edit', {'id': transformation.id}) }}">edit</a>
+
+    {{ include('transformation/_delete_form.html.twig') }}
+{% endblock %}

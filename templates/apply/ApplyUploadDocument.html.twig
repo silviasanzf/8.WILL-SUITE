@@ -1,0 +1,61 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}Candidature{% endblock %}
+
+{% block body %}
+
+    <div class="container contHome">
+        <div class="row">
+            <p>Formats recommandés: jpg, jpeg, png. Pour visualiser un document ".pdf", cliquez sur "Aperçu"</p>
+
+            <p>Pour remplacer un document, vous pouvez refaire le téléchargement, le second document remplacera le
+                premier.</p>
+
+        </div>
+        {{ form_start(form) }}
+        <div class="row justify-content-center">
+            <div class="col-4">
+                {{ form_row(form.cvFile) }}
+
+            </div>
+            <div class="col-4">
+                {{ form_row(form.ribFile) }}
+
+            </div>
+            <div class="col-4">
+                {{ form_row(form.socialCardFile) }}
+
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                {{ form_row(form.identityCardFile) }}
+
+            </div>
+            <div class="col-4">
+                {{ form_row(form.residencePermitFile) }}
+
+            </div>
+            <div class="col-4">
+                {{ form_row(form.cmbFile) }}
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <a class="btn btn-primary btn-block" href="{{ path('apply_upload_photo') }}">
+                    <i class="fas fa-chevron-left"></i> {{ button_label|default('Etape précédente') }}
+                </a>
+            </div>
+            <div class="col-lg-6 col-12">
+                <button type="submit" class="btn btn-primary btn-block">
+                    {{ button_label|default('Etape suivante ') }}<i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

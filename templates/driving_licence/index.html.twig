@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DrivingLicence index{% endblock %}
+
+{% block body %}
+    <h1>DrivingLicence index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for driving_licence in driving_licences %}
+            <tr>
+                <td>{{ driving_licence.id }}</td>
+                <td>{{ driving_licence.type }}</td>
+                <td>
+                    <a href="{{ path('driving_licence_show', {'id': driving_licence.id}) }}">show</a>
+                    <a href="{{ path('driving_licence_edit', {'id': driving_licence.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('driving_licence_new') }}">Create new</a>
+{% endblock %}

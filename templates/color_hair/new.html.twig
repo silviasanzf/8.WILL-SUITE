@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ColorHair{% endblock %}
+
+{% block body %}
+    <h1>Create new ColorHair</h1>
+
+    {{ include('color_hair/_form.html.twig') }}
+
+    <a href="{{ path('color_hair_index') }}">back to list</a>
+{% endblock %}

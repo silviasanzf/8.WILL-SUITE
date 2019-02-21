@@ -1,0 +1,57 @@
+{% block title %}PROFIL DE L'ARTISTE- AGENCE THE WILL{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row ">
+            <img src="{{ dir ~ artist.portraitPictureName1 }}" width="250" alt="portrait">
+        </div>
+
+
+        <div class="row ">
+            <p>{{ artist.firstname }}  {{ artist.birthName|upper }} <br>
+                {{ artist.pseudonym }} <br>
+                {{ artist.gender }}</p>
+        </div>
+
+        <div class="row ">
+
+            <p>INFOS PERSONNELLES<br>
+                Né(e) le {{ artist.birthDate | date('d/m/Y') }}<br>
+                à {{ artist.birthCity }} ({{ artist.birthDept }})<br>
+                - {{ artist.birthCountry }} <br>
+
+                Nationalité {{ artist.nationality }}<br>
+                Nombre d'enfants à charge : {{ artist.dependentChild }}<br>
+                {{ ('marital_status_' ~ artist.maritalStatus)|trans }}<br>
+                {{ artist.address }} <br>
+                {{ artist.zipCode }} {{ artist.city }}<br>
+
+                Tel :{{ artist.phone }} <br>
+                Tel fixe : {{ artist.homePhone }}<br>
+                email: {{ artist.email }}</p>
+
+
+            <p> Intermittence : {{ (artist.intermittent)|trans }}<br>
+                Numéro de congés spectacle : {{ artist.showNo }}<br>
+                Numéro permis de séjour : {{ artist.residentPermitNo }}<br>
+                Date expiration : {{ artist.expiryDateResident|date('d/m/Y') }}<br>
+                Adresse fiscale : {{ artist.taxAddress }}<br>
+                {{ artist.zipCodeTax }}  {{ artist.taxCity }}<br>
+                Type de permis : {% for drivingLicences in artist.drivingLicences %}<br>
+            <li>{{ drivingLicences.type }} </li> {% endfor %}
+            Moyen de transport: {% for transports in artist.transports %}
+                <li>{{ transports.type }}</li> {% endfor %} <br>
+
+            Date dernière visite médicale : {{ artist.lastMedicalVisit | date('d/m/Y') }} <br>
+            Numéro de sécurité sociale : {{ artist.socialSecurityNo }}<br>
+        </div>
+
+
+        <div class="row">
+            EMPLOI(S)/SITUATIONS ACCEPTES : {% for jobs in artist.jobs %}
+                <li>{{ jobs.type }} </li> {% endfor %}
+
+            SECTEURS ACCEPTES : {% for sectorJobs in artist.sectorJobs %}
+                <li>{{ sectorJobs.type }} </li> {% endfor %}
+        </div>
+    </div>
+{% endblock %}

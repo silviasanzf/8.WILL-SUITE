@@ -1,0 +1,115 @@
+{% extends 'baseApply.html.twig' %}
+
+{% block title %}Candidature{% endblock %}
+
+{% block body %}
+    <div class="container contHome">
+        {{ form_start(form) }}
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.height, { 'label': 'Taille en cm', 'attr' : {'min':0} }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.weight, { 'label': 'Poids en Kg', 'attr' : {'min':0} }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.corpulence, { 'label': 'Corpulence' }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.physical, { 'label': 'Type physique' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.hairiness, { 'label': 'Pilosité (pour les hommes)' }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.hair, { 'label': 'Longueur de cheveux' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.colorHair, { 'label': 'Couleur de cheveux' }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.textureHair, { 'label': 'Texture de cheveux' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.chestSize, { 'label': 'Tour de poitrine', 'attr' : {'min':0} }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.eye, { 'label': 'Couleur des yeux', 'attr' : {'min':0} }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.waistSize, { 'label': 'Tour de taille', 'attr' : {'min':0} }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.pantsSize, { 'label': 'Taille pantalon', 'attr' : {'min':0} }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.jacketSize, { 'label': 'Taille confection de veste', 'attr' : {'min':0} }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.shoesSize, { 'label': 'Pointure de chaussure', 'attr' : {'min':0} }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.hipSize, { 'label': 'Tour de hanche', 'attr' : {'min':0} }) }}
+            </div>
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.headCirconference, { 'label': 'Tour de tête', 'attr' : {'min':0} }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col-lg-6 col-12">
+                {{ form_row(form.skirtSize, { 'label': 'Taille de confection de jupe', 'attr' : {'min':0} }) }}
+            </div>
+            <div class="col-lg-4 col-8">
+                {{ form_row(form.braSize, { 'label': 'Taille de soutien-gorge', 'attr' : {'min':0, 'step':5} }) }}
+            </div>
+
+            <div class="col-lg-2 col-4">
+                {{ form_row(form.cupSize, { 'label': 'Bonnet' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col space-around">
+                {{ form_row(form.handicap, { 'label': "Nature d'un handicap éventuel (strabisme, boiteux etc.)" }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col space-around">
+                {{ form_row(form.distinctiveSign, { 'label': 'signes particuliers' }) }}
+            </div>
+        </div>
+        <div class="row justify-content">
+            <div class="col space-around">
+                {{ form_row(form.transformations, { 'label': 'Cochez les "transformations" que vous acceptez:' }) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <a class="btn btn-primary btn-block" href="{{ path('apply_Experience', {'role' : artist.roles.0 }) }}">
+                    <i class="fas fa-chevron-left"></i>{{ button_label|default(' Etape précédente') }}
+                </a>
+            </div>
+            <div class="col-lg-6 col-12">
+                <button type="submit" class="btn btn-primary btn-block">
+                    {{ button_label|default('Etape suivante ') }}<i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+

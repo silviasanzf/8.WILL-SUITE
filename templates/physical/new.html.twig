@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Physical{% endblock %}
+
+{% block body %}
+    <h1>Create new Physical</h1>
+
+    {{ include('physical/_form.html.twig') }}
+
+    <a href="{{ path('physical_index') }}">back to list</a>
+{% endblock %}

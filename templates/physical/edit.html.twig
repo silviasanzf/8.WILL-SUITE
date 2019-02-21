@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Physical{% endblock %}
+
+{% block body %}
+    <h1>Edit Physical</h1>
+
+    {{ include('physical/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('physical_index') }}">back to list</a>
+
+    {{ include('physical/_delete_form.html.twig') }}
+{% endblock %}

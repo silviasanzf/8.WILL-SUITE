@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TextureHair{% endblock %}
+
+{% block body %}
+    <h1>Create new TextureHair</h1>
+
+    {{ include('texture_hair/_form.html.twig') }}
+
+    <a href="{{ path('texture_hair_index') }}">back to list</a>
+{% endblock %}

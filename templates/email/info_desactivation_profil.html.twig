@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>{{ artist.firstname }}
+    {% if artist.birthName != '' %}
+        {{ artist.birthName }}
+    {% endif %}
+    {% if artist.marriedName != '' %}
+        {{ artist.marriedName }}
+    {% endif %}
+    vient de désactiver son profil. Vous pouvez le supprimer de la base en respectant la limite du délai légal.
+</h1>
+<a href="{{ absolute_url(path('artist_show_admin', {'id' : artist.id })) }}">Consulter son profil</a>
+</body>
+</html>
+

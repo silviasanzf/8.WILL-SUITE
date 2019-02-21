@@ -1,0 +1,11 @@
+parameters:
+    progress:
+        apply_CivilStatus: 10
+        apply_Experience: 20
+        apply_Physical: 30
+        apply_Actor: 40
+        apply_upload_photo: 50
+        apply_upload_document: 60
+        apply_id_video: 70
+        on_hold: 90
+        validated: 100

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="Pmc1Otr" resname="marital_status_0">
+        <source>marital_status_0</source>
+        <target>Célibataire</target>
+      </trans-unit>
+      <trans-unit id="UfEzidL" resname="marital_status_1">
+        <source>marital_status_1</source>
+        <target>Marié(e)</target>
+      </trans-unit>
+      <trans-unit id="Ks0z8VY" resname="marital_status_2">
+        <source>marital_status_2</source>
+        <target>Pacsé(e)</target>
+      </trans-unit>
+      <trans-unit id="2GmbgFV" resname="marital_status_3">
+        <source>marital_status_3</source>
+        <target>Veuf-veuve</target>
+      </trans-unit>
+      <trans-unit id="wkq7w_k" resname="marital_status_4">
+        <source>marital_status_4</source>
+        <target>Vis maritalement</target>
+      </trans-unit>
+      <trans-unit id="xPK1uQI" resname="level_degree_0">
+        <source>level_degree_0</source>
+        <target>Aucun diplôme</target>
+      </trans-unit>
+      <trans-unit id="ab2cib5" resname="level_degree_1">
+        <source>level_degree_1</source>
+        <target>BEP/CAP ou équivalent</target>
+      </trans-unit>
+      <trans-unit id="3DNNzaR" resname="level_degree_2">
+        <source>level_degree_2</source>
+        <target>BAC ou équivalent</target>
+      </trans-unit>
+      <trans-unit id="4zLcAdJ" resname="level_degree_3">
+        <source>level_degree_3</source>
+        <target>BAC +2</target>
+      </trans-unit>
+      <trans-unit id="dT3qCuB" resname="level_degree_4">
+        <source>level_degree_4</source>
+        <target>BAC+3</target>
+      </trans-unit>
+      <trans-unit id="VCY794z" resname="level_degree_5">
+        <source>level_degree_5</source>
+        <target>BAC+4 et plus</target>
+      </trans-unit>
+      <trans-unit id="dPPxk74" resname="cup_size_0">
+        <source>cup_size_0</source>
+        <target>A</target>
+      </trans-unit>
+      <trans-unit id="ZBVgf11" resname="cup_size_1">
+        <source>cup_size_1</source>
+        <target>B</target>
+      </trans-unit>
+      <trans-unit id="HNiXeBc" resname="cup_size_2">
+        <source>cup_size_2</source>
+        <target>C</target>
+      </trans-unit>
+      <trans-unit id="RNIxz_H" resname="cup_size_3">
+        <source>cup_size_3</source>
+        <target>D</target>
+      </trans-unit>
+      <trans-unit id="WFFhwF." resname="cup_size_4">
+        <source>cup_size_4</source>
+        <target>E</target>
+      </trans-unit>
+      <trans-unit id="EUJ_wAx" resname="cup_size_5">
+        <source>cup_size_5</source>
+        <target>F</target>
+      </trans-unit>
+      <trans-unit id="3QaDGTT" resname="cup_size_6">
+        <source>cup_size_6</source>
+        <target>G ou +</target>
+      </trans-unit>
+      <trans-unit id="rEX9r3C" resname="level_progress_0">
+        <source>level_progress_0</source>
+        <target>Non</target>
+      </trans-unit>
+      <trans-unit id="Z5RX41w" resname="level_progress_1">
+        <source>level_progress_1</source>
+        <target>Oui</target>
+      </trans-unit>
+      <trans-unit id="vdOg85S" resname="level_progress_2">
+        <source>level_progress_2</source>
+        <target>En cours</target>
+      </trans-unit>
+
+       <trans-unit id="vdOg857kjmk" resname="professional_0">
+              <source>professional_0</source>
+              <target>FIGURANT</target>
+            </trans-unit>
+
+      <trans-unit id="vdOg856" resname="professional_1">
+                    <source>professional_1</source>
+                    <target>PROFESSIONNEL</target>
+                  </trans-unit>
+
+      <trans-unit id="M5GDlE6" resname="Valider le profil du candidat">
+        <source>Valider le profil du candidat</source>
+        <target>Valider le profil du candidat</target>
+      </trans-unit>
+      <trans-unit id="PQL3T_T" resname="RESIDENT_ARTIST_INFOS">
+        <source>RESIDENT_ARTIST_INFOS</source>
+        <target>
+          POUR LES ÉTRANGERS UNIQUEMENT :
+          N° de carte de séjour (joindre une photocopie) : %ARTIST_RESIDENT_PERMIS_NO% Date de délivrance : %ARTIST_EXPIRY_DATE_RESIDENT%
+        </target>
+      </trans-unit>
+      <trans-unit id="MESS001" resname="message_project_create">
+         <source>message_project_create</source>
+         <target>Le projet a bien été créé !</target>
+      </trans-unit>
+      <trans-unit id="MESS002" resname="message_project_edit">
+         <source>message_project_edit</source>
+         <target>Le projet a bien été modifié !</target>
+      </trans-unit>
+      <trans-unit id="MESS003" resname="message_production_create">
+         <source>message_production_create</source>
+         <target>La production a bien été créée !</target>
+      </trans-unit>
+      <trans-unit id="MESS004" resname="message_production_edit">
+         <source>message_production_edit</source>
+         <target>La production a bien été modifiée !</target>
+      </trans-unit>
+      <trans-unit id="MESS005" resname="message_artiste_validate">
+         <source>message_artiste_validate</source>
+         <target>Le profil de l'artiste à bien été validé !</target>
+      </trans-unit>
+      <trans-unit id="MESS006" resname="message_artiste_reactivate">
+         <source>message_artiste_reactivate</source>
+         <target><![CDATA[Content de vous revoir parmi nous!
+         Votre profil vient d'être réactivé.
+         Vous retrouverez l'ensemble de vos informations que vous pouvez mettre à jour.]]></target></trans-unit>
+    </body>
+  </file>
+</xliff>

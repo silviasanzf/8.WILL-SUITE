@@ -68,8 +68,12 @@
         <img class="logoCand" src="{{ asset('assets/images/site/whitelogo.png') }}">
     </div>
     {% include 'message/_flash.html.twig' %}
+
     {% if app.request.get('_route') in ['apply_CivilStatus' , 'apply_Experience' , 'apply_Physical' , 'apply_Actor' , 'apply_upload_photo' , 'apply_upload_document' , 'apply_id_video'] %}
         {% include '_applyStep.html.twig' %}
+
+    {% elseif app.request.get('_route') in ['artist_show_CivilStatus' , 'artist_show_Experience' , 'artist_show_Physical' , 'artist_show_Actor' , 'artist_show_photo' , 'artist_show_document' , 'artist_show_video'] %}
+        {% include '_applyStepAdmin.html.twig' %}
     {% endif %}
 </div>
 <div class="message-place">

@@ -14,17 +14,9 @@
                 {{ form_row(form.sectorJobs, { 'label': 'Dans quel secteur?' }) }}
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6 col-12">
-                <a class="btn btn-primary btn-block" href="{{ path('apply_Physical', {'role' : artist.roles.0 }) }}">
-                    <i class="fas fa-chevron-left"></i> {{ button_label|default(' Etape précédente') }}
-                </a>
-            </div>
-            <div class="col-lg-6 col-12">
-                <button class="btn btn-primary btn-block">
-                    {{ button_label|default('Etape suivante') }} <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
+        <div class="row justify-content-center">
+        {% include 'apply/_ApplyPrecedent.html.twig' %}
+        {% include 'apply/_ApplySuivant.html.twig' %}
         </div>
         {{ form_end(form) }}
     </div>

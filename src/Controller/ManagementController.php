@@ -30,6 +30,14 @@ use App\Form\ValidationType;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Form\ArtistType;
+use App\Form\ApplyActorType;
+use App\Form\ApplyUploadPhotoType;
+use App\Form\ApplyUploadDocumentType;
+use App\Form\ApplyVideoType;
+use App\Form\ApplyCivilStatusType;
+use App\Form\ApplyPhysicalType;
+use App\Form\ApplyExperienceType;
+use App\Service\Link;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
@@ -146,8 +154,7 @@ class ManagementController extends AbstractController
                 ->setContentType('text/html')
                 ->setBody($this->renderView('email/welcome_actor.html.twig', [
                     'artist' => $artist,
-                ]))
-            ;
+                ]));
             $mailer->send($message);
 
             $this->addFlash(
@@ -174,9 +181,9 @@ class ManagementController extends AbstractController
     public function downloadProfilAdmin(Artist $artist)
     {
 
-        $title= $artist->getFirstname();
-        $title1=$artist->getMarriedName();
-        $tittle2=$artist->getBirthName();
+        $title = $artist->getFirstname();
+        $title1 = $artist->getMarriedName();
+        $tittle2 = $artist->getBirthName();
 
         // Configure Dompdf according to your needs
         $options = new \Dompdf\Options();
@@ -201,19 +208,20 @@ class ManagementController extends AbstractController
         $dompdf->render();
 
         // Output the generated PDF to Browser (force download)
-        $dompdf->stream("Administratif-".$title.$title1.$tittle2."pdf", [
+        $dompdf->stream("Administratif-" . $title . $title1 . $tittle2 . "pdf", [
             "Attachment" => true
         ]);
     }
+
     /**
      * @Route("/telecharger/physique/{id}", name="artist_download_physical", methods="GET|POST")
      */
     public function downloadProfilPhysical(Artist $artist)
     {
 
-        $title= $artist->getFirstname();
-        $title1=$artist->getMarriedName();
-        $tittle2=$artist->getBirthName();
+        $title = $artist->getFirstname();
+        $title1 = $artist->getMarriedName();
+        $tittle2 = $artist->getBirthName();
 
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
@@ -239,7 +247,7 @@ class ManagementController extends AbstractController
         $dompdf->render();
 
         // Output the generated PDF to Browser (force download)
-        $dompdf->stream("Physique-".$title.$title1.$tittle2."pdf", [
+        $dompdf->stream("Physique-" . $title . $title1 . $tittle2 . "pdf", [
             "Attachment" => true
         ]);
     }
@@ -360,5 +368,261 @@ class ManagementController extends AbstractController
         }
 
         return $this->redirectToRoute('management_index');
+    }
+
+    /**
+     * @Route("/acteur/{id}", name="artist_show_Actor", methods="GET|POST")
+     *
+     * @param Request $request
+     * @param Artist $artist
+     * @return Response
+     */
+    public function showActor(Artist $artist, Request $request): Response
+    {
+        $form = $this->createForm(ApplyActorType::class, $artist);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($artist->getProgress() != 100) {
+                $artist->setProgress(40);
+            }
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('artist_show_photo', ['id' => $artist->getId()]);
+        }
+
+        return $this->render('apply/ApplyActor.html.twig', [
+            'artist' => $artist,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/etat-civil/{id}", name="artist_show_CivilStatus", methods="GET|POST")
+     *
+     * @param Artist $artist
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function showCivilStatus(Artist $artist, Request $request): Response
+    {
+
+        $form = $this->createForm(ApplyCivilStatusType::class, $artist);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($artist->getProgress() != 100) {
+                $artist->setProgress(10);
+            }
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->redirectToRoute('artist_show_Experience', ['id' => $artist->getId()]);
+        }
+
+        return $this->render('apply/ApplyCivilStatus.html.twig', [
+            'artist' => $artist,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/experience/{id}", name="artist_show_Experience", methods="GET|POST")
+     *
+     * @param Artist $artist
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function showExperiences(Artist $artist, Request $request): Response
+    {
+        $form = $this->createForm(ApplyExperienceType::class, $artist);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($artist->getProgress() != 100) {
+                $artist->setProgress(20);
+            }
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('artist_show_Physical', ['id' => $artist->getId()]);
+        }
+
+        return $this->render('apply/ApplyExperience.html.twig', [
+            'artist' => $artist,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/criteres-physiques/{id}", name="artist_show_Physical", methods="GET|POST")
+     *
+     * @param Request $request
+     * @param Artist $artist
+     * @return Response
+     */
+    public function showPhysical(Artist $artist, Request $request): Response
+    {
+        $form = $this->createForm(ApplyPhysicalType::class, $artist);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($artist->getProgress() != 100) {
+                $artist->setProgress(30);
+            }
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('artist_show_Actor', ['id' => $artist->getId()]);
+        }
+
+        return $this->render('apply/ApplyPhysical.html.twig', [
+            'artist' => $artist,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/acteur/{id}", name="artist_show_Actor", methods="GET|POST")
+     *
+     * @param Request $request
+     * @param Artist $artist
+     * @return Response
+     */
+    public function actor(Artist $artist, Request $request): Response
+    {
+        $form = $this->createForm(ApplyActorType::class, $artist);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($artist->getProgress() != 100) {
+                $artist->setProgress(40);
+            }
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('artist_show_photo');
+        }
+
+        return $this->render('apply/ApplyActor.html.twig', [
+            'artist' => $artist,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("photo/{id}", name="artist_show_photo", methods="GET|POST", requirements={"id"="\d+"})
+     *
+     * @param Artist $artist
+     * @param TranslatorInterface $translator
+     * @param Request $request
+     *
+     * @return Response
+     */
+
+    public function showPhotos(Artist $artist, TranslatorInterface $translator, Request $request): Response
+    {
+        $form = $this->createForm(ApplyUploadPhotoType::class, $artist);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($artist->getProgress() != 100) {
+                $artist->setProgress(50);
+            }
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $artist->setPortraitPictureFile1(null);
+            $artist->setPortraitPictureFile2(null);
+            $artist->setFullPictureFile(null);
+
+            return $this->redirectToRoute('artist_show_document', ['id' => $artist->getId()]);
+        }
+
+
+        return $this->render('apply/ApplyUploadPhoto.html.twig', [
+            'artist' => $artist,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("document/{id}", name="artist_show_document", methods="GET|POST", requirements={"id"="\d+"})
+     */
+    public function showDocuments(Artist $artist, TranslatorInterface $translator, Request $request): Response
+    {
+        $form = $this->createForm(ApplyUploadDocumentType::class, $artist);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $artist->setCvFile(null);
+            $artist->setRibFile(null);
+            $artist->setSocialCardFile(null);
+            $artist->setIdentityCardFile(null);
+            $artist->setResidencePermitFile(null);
+            $artist->setCmbFile(null);
+
+            return $this->redirectToRoute('artist_show_video', ['id' => $artist->getId()]);
+        }
+
+        return $this->render('apply/ApplyUploadDocument.html.twig', [
+            'artist' => $artist,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/video/{id}", name="artist_show_video", methods="GET|POST")
+     *
+     * @param Request $request
+     * @param Link $link
+     * @param Artist $artist
+     *
+     * @return Response
+     */
+    public function showVideo(Artist $artist, Request $request, Link $link): Response
+    {
+
+        $form = $this->createForm(ApplyVideoType::class, $artist);
+        $form->handleRequest($request);
+
+        $keyLink = null;
+        if (null !== $artist->getVideo()) {
+            $keyLink = $link->generate($artist->getVideo());
+            $artist->setVideo($keyLink);
+        }
+
+        /**
+         * @var \Symfony\Component\Form\SubmitButton $validationVideo
+         */
+        $validationVideo = $form->get('validation_video');
+        if ($validationVideo->isClicked()) {
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('artist_show_video', ['id' => $artist->getId()]);
+        }
+
+        /**
+         * @var \Symfony\Component\Form\SubmitButton $validationProfil
+         */
+        $validationProfil = $form->get('validation_profil');
+
+        if ($validationProfil->isClicked()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('artist_show_admin', ['id' => $artist->getId()]);
+        }
+
+        return $this->render('apply/ApplyVideo.html.twig', [
+            'artist' => $artist,
+            'keyLink' => $keyLink,
+            'form' => $form->createView(),
+        ]);
     }
 }

@@ -35,16 +35,9 @@
                 {{ form_row(form.practiceSports, { 'label': 'Sports pratiqués' }) }}
             </div>
         </div>
-
         <div class="row justify-content-center">
-            <div class="col-lg-6 col-12">
-                <a class="btn btn-primary btn-block"
-                   href="{{ path('apply_CivilStatus', {'role' : artist.roles.0 }) }}"><i class="fas fa-chevron-left"></i>{{ 'Etape précédente' }}
-                </a>
-            </div>
-            <div class="col space-around">
-                <button class="btn btn-primary btn-block">{{ button_label|default('Etape suivante ') }}<i class="fas fa-chevron-right"></i></button>
-            </div>
+        {% include 'apply/_ApplyPrecedent.html.twig' %}
+        {% include 'apply/_ApplySuivant.html.twig' %}
         </div>
         {{ form_end(form) }}
     </div>

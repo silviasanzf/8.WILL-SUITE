@@ -46,18 +46,18 @@
                     <a href="{{ path('artist_download_physical', {'id': artist.id}) }}"><i class="fas fa-download"></i>PHYSIQUE</a>
                 </div>
                 <div class="col-lg-12 profil_button">
-                    <a href="{{ path('apply_upload_photo', {'role' : artist.roles.0 }) }}"
+                    <a href="{{ path('artist_show_photo', {'id': artist.id}) }}"
                        class="btn btn-primary btn-lg" style="width: 250px;margin-top: 20px;">Photos</a>
                 </div>
                 <div class="col-lg-12 profil_button">
-                    <a href="{{ path('apply_id_video', {'role' : artist.roles.0 }) }}" class="btn btn-primary btn-lg"
+                    <a href="{{ path('artist_show_video', {'id': artist.id}) }}" class="btn btn-primary btn-lg"
                        style="width: 250px;margin-top: 20px;">Video</a>
                 </div>
                 <div class="col-lg-12 profil_button">
-                    <a href="{{ path('apply_upload_document', {'role' : artist.roles.0 }) }}" class="btn btn-primary btn-lg" style="width: 250px;margin-top:20px;">Documents</a>
+                    <a href="{{ path('artist_show_document', {'id': artist.id}) }}" class="btn btn-primary btn-lg" style="width: 250px;margin-top:20px;">Documents</a>
                 </div>
                 <div class="col-lg-12 profil_button">
-                    <a href="{{ path('apply_CivilStatus', {'role' : artist.roles.0 }) }}" class="btn btn-primary btn-lg"
+                    <a href="{{ path('artist_show_CivilStatus', {'id' : artist.id }) }}" class="btn btn-primary btn-lg"
                        style="width: 250px;margin-top:40px;">Modifier</a>
                 </div>
                 <div class="col-lg-12 profil_button">
@@ -308,38 +308,38 @@
             </div>
         </div>
 
-                <div class="row justify-content-center">
-                    <h1>Liste des castings de {{ artist.firstname }}</h1>
-                </div>
-                <div class="row justify-content-around">
-                    <table class="table">
-                        <thead>
-                        <th>Titre</th>
-                        <th>Boite de production</th>
-                        <th>Format</th>
-                        <th>Durée de tournage</th>
-                        <th> </th>
-                        <th> </th>
-                        <th> </th>
-                        </thead>
-                        <tbody>
-                        {% for casting in artist.castings %}
-                            <tr>
-                                <td>{{ casting.title }}</td>
-                                <td>{{ casting.productionCompagny }}</td>
-                                <td>{{ casting.format }}</td>
-                                <td>{{ casting.duration }}</td>
-                                <td><a href="{{ path('project_show', {'id': casting.id}) }}">Détails</a></td>
-                                <td>
-                                    <a href="{{ path('application_validation', {'artist': artist.id, 'project': casting.id, 'id': casting.id}) }}" class="btn btn-primary">Valider</a>
-                                </td>
-                                <td>
-                                    <a href="{{ path('application_denial', {'artist': artist.id, 'project': casting.id, 'id': casting.id}) }}" class="btn btn-primary">Refuser</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+        <div class="row justify-content-center">
+            <h1>Liste des castings de {{ artist.firstname }}</h1>
+        </div>
+        <div class="row justify-content-around">
+            <table class="table">
+                <thead>
+                <th>Titre</th>
+                <th>Boite de production</th>
+                <th>Format</th>
+                <th>Durée de tournage</th>
+                <th> </th>
+                <th> </th>
+                <th> </th>
+                </thead>
+                <tbody>
+                {% for casting in artist.castings %}
+                    <tr>
+                        <td>{{ casting.title }}</td>
+                        <td>{{ casting.productionCompagny }}</td>
+                        <td>{{ casting.format }}</td>
+                        <td>{{ casting.duration }}</td>
+                        <td><a href="{{ path('project_show', {'id': casting.id}) }}">Détails</a></td>
+                        <td>
+                            <a href="{{ path('application_validation', {'artist': artist.id, 'project': casting.id, 'id': casting.id}) }}" class="btn btn-primary">Valider</a>
+                        </td>
+                        <td>
+                            <a href="{{ path('application_denial', {'artist': artist.id, 'project': casting.id, 'id': casting.id}) }}" class="btn btn-primary">Refuser</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}

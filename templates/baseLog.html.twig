@@ -20,7 +20,7 @@
         <img class="logoCand" src="{{ asset('assets/images/site/whitelogo.png') }}">
     </div>
     {% if app.request.get('_route') not in ['apply_home', 'login', 'user_registration', 'profil_artist_show'] %}
-        {% include '_applyStep.html.twig' %}
+        {% include '_applyStepAdmin.html.twig' %}
     {% endif %}
 </div>
 {% block body %}{% endblock %}

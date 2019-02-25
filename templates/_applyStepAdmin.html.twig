@@ -1,50 +1,50 @@
 <div class="row justify-content-center">
     <ul class="list-unstyled multi-steps">
-        <li {% if app.request.get('_route') == 'apply_CivilStatus' %}class="is-active"{% endif %}>
+        <li {% if app.request.get('_route') == 'artist_show_CivilStatus' %}class="is-active"{% endif %}>
             <a class="cache" {% if app.user.progress >= 10 %}
-               href="{{ path('apply_CivilStatus', {'id' : artist.id}) }}">{% endif %}
+               href="{{ path('artist_show_CivilStatus', {'id' : artist.id}) }}">{% endif %}
                 <span><i class="far fa-address-card d-md-none"></i></span>
                 <span class="d-none d-md-inline">Info.</span></a>
         </li>
 
-        <li {% if app.request.get('_route') == 'apply_Experience' %}class="is-active"{% endif %}>
+        <li {% if app.request.get('_route') == 'artist_show_Experience' %}class="is-active"{% endif %}>
             <a class="cache"
-               {% if app.user.progress >= 10 %}href="{{ path('apply_Experience', {'id' : artist.id}) }}">{% endif %}
+               {% if app.user.progress >= 10 %}href="{{ path('artist_show_Experience', {'id' : artist.id}) }}">{% endif %}
                 <span><i class="fas fa-graduation-cap d-md-none"></i></span>
                 <span class="d-none d-md-inline">Formation expérience</span></a>
         </li>
 
-        <li {% if app.request.get('_route') == 'apply_Physical' %}class="is-active"{% endif %}>
+        <li {% if app.request.get('_route') == 'artist_show_Physical' %}class="is-active"{% endif %}>
             <a class="cache" {% if app.user.getProgress >= 20 %}
-               href="{{ path('apply_Physical', {'id' : artist.id}) }}">{% endif %}
+               href="{{ path('artist_show_Physical', {'id' : artist.id}) }}">{% endif %}
                 <span><i class="far fa-eye d-md-none"></i></span>
                 <span class="d-none d-md-inline">Description</span></a>
         </li>
 
-        <li {% if app.request.get('_route') == 'apply_Actor' %}class="is-active"{% endif %}>
+        <li {% if app.request.get('_route') == 'artist_show_Actor' %}class="is-active"{% endif %}>
             <a class="cache"
-               {% if app.user.progress >= 30 %}href="{{ path('apply_Actor', {'id' : artist.id}) }}">{% endif %}
+               {% if app.user.progress >= 30 %}href="{{ path('artist_show_Actor', {'id' : artist.id}) }}">{% endif %}
                 <span><i class="fas fa-door-open d-md-none"></i></span>
                 <span class="d-none d-md-inline"> Secteurs</span></a>
         </li>
 
-        <li {% if app.request.get('_route') == 'apply_upload_photo' %}class="is-active"{% endif %}>
+        <li {% if app.request.get('_route') == 'artist_show_photo' %}class="is-active"{% endif %}>
             <a class="cache" {% if app.user.progress >= 40 %}
-               href="{{ path('apply_upload_photo', {'id' : artist.id}) }}">{% endif %}
+               href="{{ path('artist_show_photo', {'id' : artist.id}) }}">{% endif %}
                 <span><i class="fas fa-images d-md-none"></i></span>
                 <span class="d-none d-md-inline">Photos</span></a>
         </li>
 
-        <li {% if app.request.get('_route') == 'apply_upload_document' %}class="is-active"{% endif %}>
+        <li {% if app.request.get('_route') == 'artist_show_document' %}class="is-active"{% endif %}>
             <a class="cache" {% if app.user.progress >= 50 %}
-               href="{{ path('apply_upload_document', {'id' : artist.id}) }}">{% endif %}
+               href="{{ path('artist_show_document', {'id' : artist.id}) }}">{% endif %}
                 <span><i class="fas fa-file-alt d-md-none"></i></span>
                 <span class="d-none d-md-inline">Documents</span></a>
         </li>
 
-        <li {% if app.request.get('_route') == 'apply_id_video' %}class="is-active"{% endif %}>
+        <li {% if app.request.get('_route') == 'artist_show_video' %}class="is-active"{% endif %}>
             <a class="cache" {% if app.user.progress >= 60 %}
-               href="{{ path('apply_id_video', {'id' : artist.id}) }}">{% endif %}
+               href="{{ path('artist_show_video', {'id' : artist.id}) }}">{% endif %}
                 <span><i class="fab fa-youtube d-md-none"></i></span>
                 <span class="d-none d-md-inline">Vidéo</span></a>
         </li>

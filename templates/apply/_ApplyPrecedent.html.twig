@@ -1,0 +1,34 @@
+
+    <div class="col-lg-6 col-12">
+
+        <a class="btn btn-primary btn-block"
+
+                {% if app.request.get('_route') in ['artist_show_Experience'] %}
+           href="{{ path('artist_show_CivilStatus', {'id': artist.id}) }}">   {% endif %}
+            {% if app.request.get('_route') in ['artist_show_Physical'] %}
+                href="{{ path('artist_show_Experience', {'id': artist.id}) }}">   {% endif %}
+            {% if app.request.get('_route') in ['artist_show_Actor'] %}
+                href="{{ path('artist_show_Physical', {'id': artist.id}) }}">   {% endif %}
+            {% if app.request.get('_route') in ['artist_show_photo'] %}
+                href="{{ path('artist_show_Actor', {'id': artist.id}) }}">   {% endif %}
+            {% if app.request.get('_route') in ['artist_show_document'] %}
+                href="{{ path('artist_show_photo', {'id': artist.id}) }}">   {% endif %}
+            {% if app.request.get('_route') in ['artist_show_video'] %}
+                href="{{ path('artist_show_document', {'id': artist.id}) }}">   {% endif %}
+
+            {% if app.request.get('_route') in ['apply_Experience'] %}
+                href="{{ path('apply_CivilStatus') }}">   {% endif %}
+            {% if app.request.get('_route') in ['apply_Physical'] %}
+                href="{{ path('apply_Experience') }}">   {% endif %}
+            {% if app.request.get('_route') in ['apply_Actor'] %}
+                href="{{ path('apply_Physical') }}">   {% endif %}
+            {% if app.request.get('_route') in ['apply_upload_photo'] %}
+                href="{{ path('apply_Actor') }}">   {% endif %}
+            {% if app.request.get('_route') in ['apply_upload_document'] %}
+                href="{{ path('apply_upload_photo') }}">   {% endif %}
+            {% if app.request.get('_route') in ['apply_id_video'] %}
+                href="{{ path('apply_upload_document') }}">   {% endif %}
+
+            <i class="fas fa-chevron-left"></i>{{ button_label|default(' Etape précédente') }}
+        </a>
+    </div>

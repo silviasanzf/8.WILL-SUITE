@@ -130,7 +130,7 @@ class ManagementController extends AbstractController
     }
 
     /**
-     * @Route("artist/{id}", name="artist_show_admin", methods="GET|POST", requirements={"id"="\d+"})
+     * @Route("/artist/{id}", name="artist_show_admin", methods="GET|POST", requirements={"id"="\d+"})
      */
     public function showAdmin(
         Artist $artist,
